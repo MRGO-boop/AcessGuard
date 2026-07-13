@@ -203,9 +203,3 @@ The container seeds the database on first boot and starts the agent in Socket Mo
 
 ---
 
-
----
-
-## 📜 License
-
-MIT
