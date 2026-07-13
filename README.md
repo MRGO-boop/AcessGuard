@@ -40,18 +40,6 @@ When you `@mention` AccessGuard (or DM it in the **Assistant** panel), an **auto
 - **App Home dashboard** — a "Security Command Center" with live risk stats and quick-action modals.
 - **@mentions, 5 slash commands, and interactive buttons.**
 
----
-
-## 🎬 The four demos
-
-| # | Ask | Result |
-|---|-----|--------|
-| 1 | `Should Rahul receive Production Database access?` | Risk score + recommendation + action buttons |
-| 2 | `Investigate Rahul` | Full investigation report (profile, logins, permissions, tickets, least-privilege) |
-| 3 | `Who has admin access without MFA?` | Formatted list of privileged accounts missing MFA |
-| 4 | `Show temp access expiring today` | Report of temporary grants expiring today |
-
-Run all four offline (no Slack needed) with:
 
 ```bash
 npm run demo
@@ -202,15 +190,6 @@ docker compose up --build
 
 The container seeds the database on first boot and starts the agent in Socket Mode (provide the Slack tokens via environment).
 
----
-
-## 📸 Screenshots
-
-_Placeholder — add screenshots of the Access Review card, Investigation report, and the Approve confirmation here for your submission._
-
-| Access Review | Investigation | Admins w/o MFA |
-|---|---|---|
-| _(screenshot)_ | _(screenshot)_ | _(screenshot)_ |
 
 ---
 
@@ -224,16 +203,6 @@ _Placeholder — add screenshots of the Access Review card, Investigation report
 
 ---
 
-## 🏆 Hackathon justification
-
-AccessGuard hits every judging criterion for the Slack Agent Builder Hackathon:
-
-- ✅ **Slack AI Agent** — Assistant container + App Home dashboard + mentions + 5 slash commands + buttons
-- ✅ **Autonomous agent loop** — the LLM selects & chains MCP tools itself, with a visible tool-call trace
-- ✅ **MCP Server Integration** — five independent MCP servers orchestrated live
-- ✅ **AI reasoning** — explainable, non-hallucinating security analysis (deterministic score + LLM narrative)
-- ✅ **Slack Block Kit UI** — polished, security-themed cards (no JSON dumps)
-- ✅ **Enterprise workflow automation** — a real IAM approval workflow, end to end
 
 ---
 
