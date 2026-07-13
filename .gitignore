@@ -23,3 +23,7 @@ Thumbs.db
 # Editor
 .vscode/
 .idea/
+
+# Local project spec (not for the public repo)
+claude.md
+CLAUDE.md
