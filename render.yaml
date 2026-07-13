@@ -1,0 +1,25 @@
+# Render blueprint — free, no credit card required.
+# Socket Mode needs no inbound port, but Render requires a web service to bind
+# $PORT; the app starts a tiny health server for that (see index.ts).
+services:
+  - type: web
+    name: accessguard-ai
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: OPENROUTER_MODEL
+        value: openai/gpt-4o-mini
+      - key: LOG_LEVEL
+        value: info
+      # Secrets — set these in the Render dashboard (sync:false keeps them out of git).
+      - key: SLACK_BOT_TOKEN
+        sync: false
+      - key: SLACK_APP_TOKEN
+        sync: false
+      - key: SLACK_SIGNING_SECRET
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false

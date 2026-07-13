@@ -1,0 +1,51 @@
+{
+  "name": "accessguard-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI-powered Identity & Access Management Assistant for Slack using the Model Context Protocol (MCP)",
+  "type": "module",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "mcp/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "seed": "node --experimental-sqlite --import tsx scripts/seed.ts",
+    "reset-db": "node --experimental-sqlite --import tsx scripts/seed.ts --force",
+    "dev": "node --experimental-sqlite --import tsx apps/slack-agent/src/index.ts",
+    "start": "node --experimental-sqlite --import tsx apps/slack-agent/src/index.ts",
+    "demo": "node --experimental-sqlite --import tsx scripts/demo.ts",
+    "agent": "node --experimental-sqlite --import tsx scripts/agent-demo.ts",
+    "typecheck": "tsc -b",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write \"**/*.{ts,json,md}\""
+  },
+  "keywords": [
+    "slack",
+    "mcp",
+    "iam",
+    "security",
+    "ai-agent",
+    "hackathon"
+  ],
+  "author": "AccessGuard AI Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@typescript-eslint/eslint-plugin": "^8.20.0",
+    "@typescript-eslint/parser": "^8.20.0",
+    "eslint": "^9.18.0",
+    "prettier": "^3.4.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.13.0",
+    "@slack/bolt": "^4.2.0",
+    "openai": "^4.77.3",
+    "zod": "^3.24.1"
+  }
+}

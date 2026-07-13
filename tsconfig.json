@@ -1,0 +1,12 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/shared" },
+    { "path": "./mcp/iam-server" },
+    { "path": "./mcp/hr-server" },
+    { "path": "./mcp/audit-server" },
+    { "path": "./mcp/ticket-server" },
+    { "path": "./mcp/policy-server" },
+    { "path": "./apps/slack-agent" }
+  ]
+}

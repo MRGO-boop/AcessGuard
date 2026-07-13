@@ -1,0 +1,21 @@
+# Fly.io config for AccessGuard AI.
+# Socket Mode → no inbound HTTP service is needed (worker-style app).
+app = "accessguard-ai"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  LOG_LEVEL = "info"
+  OPENROUTER_MODEL = "openai/gpt-4o-mini"
+
+# One always-on machine. ~1GB covers the agent + 5 spawned MCP processes.
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "1024mb"
+  cpus = 1
+
+# Keep exactly one instance running; do not auto-stop (Socket Mode must stay connected).
+[deploy]
+  strategy = "immediate"

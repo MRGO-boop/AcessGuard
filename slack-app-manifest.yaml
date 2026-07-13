@@ -1,0 +1,88 @@
+# ─────────────────────────────────────────────────────────────
+# AccessGuard AI — Slack App Manifest
+#
+# One-click setup:
+#   1. Go to https://api.slack.com/apps → "Create New App" → "From a manifest"
+#   2. Pick your workspace, paste this YAML.
+#   3. Create → Install to Workspace.
+#   4. Enable Socket Mode (Settings → Socket Mode) and generate an App-Level
+#      Token with scope `connections:write`  → that's your SLACK_APP_TOKEN.
+#   5. Copy Bot User OAuth Token (xoxb-…) → SLACK_BOT_TOKEN
+#      Copy Signing Secret (Basic Information) → SLACK_SIGNING_SECRET
+#   6. Paste all three into `.env`, then run `npm run dev`.
+# ─────────────────────────────────────────────────────────────
+display_information:
+  name: AccessGuard AI
+  description: AI-powered Identity & Access Management assistant using MCP.
+  background_color: "#1a1d29"
+  long_description: >-
+    AccessGuard AI helps IT administrators review access requests, investigate
+    users, analyze security risk, and approve or deny temporary permissions
+    directly inside Slack. It reasons over five Model Context Protocol (MCP)
+    servers — HR, IAM, Audit, Ticket, and Policy — and returns explainable
+    risk scores, recommendations, and one-click actions via Block Kit.
+
+features:
+  bot_user:
+    display_name: AccessGuard
+    always_online: true
+  # App Home dashboard (Security Command Center) + Assistant DM tab.
+  app_home:
+    home_tab_enabled: true
+    messages_tab_enabled: true
+    messages_tab_read_only_enabled: false
+  # Agents & AI Apps — the Assistant container surface.
+  assistant_view:
+    assistant_description: AI security analyst that reviews access requests and investigates users across five MCP servers.
+    suggested_prompts:
+      - title: Review Rahul for Production DB
+        message: Should Rahul receive Production Database access?
+      - title: Who has admin access without MFA?
+        message: Who has admin access without MFA?
+      - title: Investigate Leo Fischer
+        message: Investigate Leo Fischer
+  slash_commands:
+    - command: /access
+      description: Review an access request
+      usage_hint: "Rahul · Production Database"
+      should_escape: false
+    - command: /investigate
+      description: Deep-dive investigation on a user
+      usage_hint: "Rahul"
+      should_escape: false
+    - command: /risk
+      description: Quick risk score for a user + resource
+      usage_hint: "Rahul · Production Database"
+      should_escape: false
+    - command: /admins
+      description: List admin accounts without MFA
+      should_escape: false
+    - command: /tempaccess
+      description: Show temporary access expiring today
+      should_escape: false
+
+oauth_config:
+  scopes:
+    bot:
+      - app_mentions:read
+      - chat:write
+      - commands
+      - users:read
+      - im:history
+      - im:read
+      - im:write
+      - assistant:write
+
+settings:
+  event_subscriptions:
+    bot_events:
+      - app_mention
+      - app_home_opened
+      - assistant_thread_started
+      - assistant_thread_context_changed
+      - message.im
+  interactivity:
+    is_enabled: true
+  socket_mode_enabled: true
+  org_deploy_enabled: false
+  token_rotation_enabled: false
