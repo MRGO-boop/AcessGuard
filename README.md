@@ -40,6 +40,7 @@ When you `@mention` AccessGuard (or DM it in the **Assistant** panel), an **auto
 - **App Home dashboard** — a "Security Command Center" with live risk stats and quick-action modals.
 - **@mentions, 5 slash commands, and interactive buttons.**
 
+Preview all four demos locally — no Slack required — with:
 
 ```bash
 npm run demo
